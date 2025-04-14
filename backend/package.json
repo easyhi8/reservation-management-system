@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@fullcalendar/daygrid": "^6.1.17",
+    "@fullcalendar/react": "^6.1.17",
+    "axios": "^1.8.4",
+    "react-router-dom": "^7.5.0"
+  }
+}
