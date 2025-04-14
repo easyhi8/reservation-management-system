@@ -14,7 +14,7 @@ const dbQuery = (query, params) => {
 // 新しいユーザーを追加する
 const addUser = (userName, email, hashedPassword) => {
   const sqlInsert = "INSERT INTO users (userName, email, password) VALUES (?, ?, ?)";
-  return dbQuery(sqlInsert, [userName, hashedPassword]);
+  return dbQuery(sqlInsert, [userName, email, hashedPassword]);
 };
 
 // ユーザーを取得する
