@@ -11,4 +11,7 @@ router.post("/create", verifyToken, reservationController.createReservation);
 // ログインユーザーのみ自分の予約を取得
 router.get("/my", verifyToken, reservationController.getMyReservations);
 
+// ログインユーザーのみ自分の予約を修正
+router.put("/:id", verifyToken, reservationController.updateReservation);
+
 module.exports = router;

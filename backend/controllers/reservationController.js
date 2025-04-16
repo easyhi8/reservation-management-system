@@ -1,6 +1,9 @@
 // reservationController.js
 
-const { addReservation, getReservationsByUserId } = require("../models/Reservation");
+const {
+  addReservation,
+  getReservationsByUserId,
+  updateReservationById } = require("../models/Reservation");
 
 // 予約作成処理
 const createReservation = async (req, res) => {
@@ -33,7 +36,31 @@ const getMyReservations = async (req, res) => {
   }
 };
 
+// 予約を編集
+const updateReservation = async (req, res) => {
+  const reservationId = req.params.id;
+  const userId = req.user.id; // JWTで取得
+  const { date, time, status } = req.body;
+
+  try {
+    // 自分の予約かどうか確認
+    const reservations = await getReservationsByUserId(userId);
+    const target = reservations.find((r) => r.id == reservationId);
+
+    if (!target) {
+      return res.status(403).json({ message: "この予約は編集できません" });
+    }
+
+    await updateReservationById(reservationId, date, time, status);
+    res.status(200).json({ message: "予約が更新されました" });
+  } catch (error) {
+    console.error("予約更新エラー:", error.message);
+    res.status(500).json({ message: "予約の更新に失敗しました" });
+  }
+};
+
 module.exports = {
   createReservation,
   getMyReservations,
+  updateReservation
 };

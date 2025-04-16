@@ -36,6 +36,12 @@ const updateReservationStatus = (id, status) => {
   return dbQuery(sql, [status, id]);
 };
 
+// ID指定で予約を更新
+const updateReservationById = (id, date, time, status) => {
+  const sql = "UPDATE reservations SET date = ?, time = ?, status = ? WHERE id = ?";
+  return dbQuery(sql, [date, time, status, id]);
+};
+
 // 予約を削除
 const deleteReservation = (id) => {
   const sql = "DELETE FROM reservations WHERE id = ?";
@@ -47,5 +53,6 @@ module.exports = {
   getReservationsByUserId,
   getAllReservations,
   updateReservationStatus,
+  updateReservationById,
   deleteReservation,
 };
