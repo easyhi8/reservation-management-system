@@ -1,6 +1,6 @@
 // reservationController.js
 
-const { addReservation } = require("../models/Reservation");
+const { addReservation, getReservationsByUserId } = require("../models/Reservation");
 
 // 予約作成処理
 const createReservation = async (req, res) => {
@@ -20,6 +20,20 @@ const createReservation = async (req, res) => {
   }
 };
 
+// 自分の予約一覧を取得
+const getMyReservations = async (req, res) => {
+  const userId = req.user.id; // JWT から取得したユーザーID
+
+  try {
+    const reservations = await getReservationsByUserId(userId);
+    res.status(200).json(reservations);
+  } catch (error) {
+    console.error("予約一覧取得エラー:", error.message);
+    res.status(500).json({ message: "予約の取得に失敗しました" });
+  }
+};
+
 module.exports = {
   createReservation,
+  getMyReservations,
 };

@@ -8,4 +8,7 @@ const { verifyToken } = require("../middleware/authMiddleware"); // 認証ミド
 // ログインユーザーのみ予約を作成可能
 router.post("/create", verifyToken, reservationController.createReservation);
 
+// ログインユーザーのみ自分の予約を取得
+router.get("/my", verifyToken, reservationController.getMyReservations);
+
 module.exports = router;
