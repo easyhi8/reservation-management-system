@@ -1,24 +1,23 @@
 // App.js
+
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 import Home from "./pages/HomePage";
 import Admin from "./pages/AdminPage";
-import Register from "./pages/RegisterPage";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/" element={<Login />} />{" "}
-        {/* ルートパスにLoginコンポーネントを表示 */}
-        <Route path="/custs" element={<Home />} />{" "}
-        {/* /custsにHomeコンポーネントを表示 */}
-        <Route path="/custs/:id" element={<Admin />} />{" "}
-        {/* /custs/:idにAdminコンポーネントを表示 */}
-        <Route path="/custs/edit/:id" element={<Register />} />{" "}
-        {/* /custs/edit/:idにRegisterコンポーネントを表示 */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/reservations" element={<AdminPage />} />
+        <Route path="/reservations/new" element={<ReservationForm />} />
+        <Route path="/reservations/edit/:id" element={<ReservationForm />} />
       </Routes>
     </div>
   );
