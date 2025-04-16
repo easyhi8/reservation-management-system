@@ -3,7 +3,9 @@
 const {
   addReservation,
   getReservationsByUserId,
-  updateReservationById } = require("../models/Reservation");
+  updateReservationById,
+  deleteReservation
+} = require("../models/Reservation");
 
 // 予約作成処理
 const createReservation = async (req, res) => {
@@ -59,8 +61,31 @@ const updateReservation = async (req, res) => {
   }
 };
 
+// 予約を削除
+const deleteMyReservation = async (req, res) => {
+  const reservationId = req.params.id;
+  const userId = req.user.id;
+
+  try {
+    // 自分の予約か確認
+    const myReservations = await getReservationsByUserId(userId);
+    const target = myReservations.find((r) => r.id == reservationId);
+
+    if (!target) {
+      return res.status(403).json({ message: "この予約は削除できません" });
+    }
+
+    await deleteReservation(reservationId);
+    res.status(200).json({ message: "予約が削除されました" });
+  } catch (error) {
+    console.error("予約削除エラー:", error.message);
+    res.status(500).json({ message: "予約の削除に失敗しました" });
+  }
+};
+
 module.exports = {
   createReservation,
   getMyReservations,
-  updateReservation
+  updateReservation,
+  deleteMyReservation
 };
