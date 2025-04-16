@@ -1,0 +1,253 @@
+/* App.css */
+/* 全体のスタイル */
+
+:root { /*htmlの擬似クラス*/
+  /*カスタムプロパティ*/
+  --background-color: #ffffff; /* 背景カラーの変数 */
+  --text-color: #333; /* テキストカラーの変数 */
+  --box-shadow-color: rgba(0, 0, 0, 0.1); /* ボックスシャドウのカラー */
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--background-color); /* 背景カラーを変数から取得 */
+  color: var(--text-color); /* テキストカラーを変数から取得 */
+}
+
+.App {
+  text-align: left;
+  width: 80%;
+  max-width: 800px;
+  margin: 40px auto;
+  font-family: Arial, sans-serif;
+  color: var(--text-color);  /* テキストカラーを変数から取得 */
+  padding: 15px 20px;
+  box-shadow: 0 2px 10px var(--box-shadow-color); /* ボックスシャドウを設定 */
+  border-radius: 8px;
+  background-color: var(--background-color); /* 背景カラーを変数から取得 */
+}
+
+/* ダークモード対応 */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #000;
+    --text-color: #ffffff;
+    --box-shadow-color: rgba(255, 255, 255, 0.3);
+  }
+
+  a:visited {
+    color: #be76f5;
+  }
+} */
+
+/* フォームのスタイル */
+
+.login .textBox {
+  display: flex;
+  flex-direction: column; /* 縦に並べる */
+  align-items: center;     /* 中身を中央寄せ */
+}
+
+h2 {
+  text-align: center;
+}
+
+.textBox input,
+.textBox textarea {
+  width: 45%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: inherit; /* 親要素のフォントを引き継ぐ */
+}
+
+.search {
+  display: flex;
+  align-items: center;  /* 垂直方向に中央揃え */
+  gap: 10px;            /* 要素間のスペースを10pxに設定 */
+}
+
+.inputRow {
+  display: flex;
+  justify-content: space-between;
+  width: 48%;
+  flex-wrap: wrap; /*子要素を折り返す*/
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column; /* 縦に配置 */
+  width: 100%;
+}
+
+.inputGroup label {
+  display: block;
+  width: 100%;
+}
+
+.inputGroup input {
+  width: 96%;
+}
+
+#dateInput,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: inherit; /* 親要素のフォントを引き継ぐ */
+  margin: 0;
+}
+
+.textBox button:hover {
+  background-color: #07b0e8; /* ホバー時の背景色を変更 */
+}
+.textBox button {
+  margin-left: auto;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #008cba;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;  /* 背景カラーの変更にトランジションを追加 */
+}
+
+.login .textBox button {
+  margin: 0 15px;
+}
+
+.detail button {
+  margin-left: auto;
+  margin-right: 0px;
+  margin-top: 0px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.search button {
+  margin-right: 10px;
+  margin-top: 0px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;  /* 背景カラーの変更にトランジションを追加 */
+}
+
+.search button:hover {
+  background-color:#56c75a
+}
+
+.buttonContainer {
+  display: flex;
+  width: 32%;
+  margin-top: 10px;
+  justify-content: flex-start;  /* ボタンを左寄せ */
+}
+
+.login .textBox .buttonContainer {
+  display: flex;           /* 横並びにするためにflexを使用 */
+  flex-direction: row;     /* 横並びに */
+  justify-content: space-between; /* 中央に配置 */
+  margin-top: 10px;         /* 上に少しスペースを追加 */
+}
+
+.buttonContainer button {
+  margin-left: 0;
+}
+
+/* リストのスタイル */
+
+ul {
+  list-style-type: none; /* リストスタイルをなしに */
+  padding-inline-start: 0;
+  margin: 0;
+  font-size: 23px;
+}
+
+li {
+  margin: 5px 0;
+  padding: 0px;
+  border-radius: 4px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #000;
+}
+
+th, td {
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: left;
+  background-color: #f4f4f4;
+}
+
+td {
+  background-color: #fff;
+}
+.detailTable th {
+  background-color: #fff;
+  border: none;
+  width: 120px;
+  padding-left: 0;
+}
+
+.detailTable td {
+  border: none;
+}
+
+
+
+/* メディアクエリを追加してレスポンシブ対応 */
+
+@media (max-width: 600px) {
+  .inputRow {
+    width: 93%;
+    flex-direction: column;
+  }
+
+  .inputGroup {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .inputGroup select {
+    width: 107%;
+  }
+
+  .textBox input, 
+  .textBox button {
+    width: 45%;
+    margin: 5px 10px 5px 0;
+  }
+
+  .textBox input,
+  .textBox textarea {
+    width: 93%;
+  }
+
+  #dateInput,
+  select {
+    text-align: center;
+  }
+
+  .textBox button:last-child {
+    margin-right: 0;
+  }
+}
