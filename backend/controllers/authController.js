@@ -34,23 +34,37 @@ const loginUser = async (req, res) => {
   try {
     // メールアドレスに基づいてユーザーを取得
     const results = await getUser(email);
+    console.log("Results from DB:", results); // DBから取得した結果を確認
     if (results.length === 0) {
+      console.log("No user found with this email:", email); // デバッグ: ユーザーが見つからない
       return res.status(401).send("ユーザー名またはパスワードが間違っています"); // ユーザーが存在しない
     }
 
     const user = results[0]; // ユーザー情報を取得
-    const match = await bcrypt.compare(password, user.password); // パスワードを比較
+    console.log("User found:", user); // デバッグ: ユーザー情報を確認
+    console.log("Stored hashed password:", user.password);  // 保存されたパスワードを確認
 
-    if (!match) {
-      return res.status(401).send("ユーザー名またはパスワードが間違っています"); // パスワード不一致
+    // パスワードを比較
+    try {
+      const match = await bcrypt.compare(password, user.password);
+      console.log(match); // 正しいログ出力
+
+      if (!match) {
+        console.log("Password mismatch", { inputPassword: password, storedPassword: user.password }); // デバッグ: パスワード不一致
+        return res.status(401).send("ユーザー名またはパスワードが間違っています"); // パスワード不一致
+      }
+
+      // JWTを生成し、ユーザーIDをペイロードに含める
+      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+        expiresIn: "1h", // 有効期限：1時間
+      });
+
+      console.log("JWT Token:", token); // デバッグ: トークンを確認
+      res.json({ message: "ログイン成功", token }); // トークンを返す
+    } catch (error) {
+      console.error("Password comparison error:", error);
+      return res.status(500).send("パスワード比較時にエラーが発生しました");
     }
-
-    // JWTを生成し、ユーザーIDをペイロードに含める
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "1h", // 有効期限：1時間
-    });
-
-    res.json({ message: "ログイン成功", token }); // トークンを返す
   } catch (error) {
     console.error(error);
     return res.status(500).send("ログインに失敗しました");
@@ -109,4 +123,3 @@ module.exports = {
   loginUser,
   requestPasswordReset,
 };
-

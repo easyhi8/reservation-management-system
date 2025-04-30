@@ -3,6 +3,8 @@
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/react": "^6.1.17",
     "axios": "^1.8.4",
+    "bcrypt": "^5.1.1",
+    "nodemailer": "^6.10.1",
     "react-router-dom": "^7.5.0",
     "react-scripts": "^5.0.1"
   },

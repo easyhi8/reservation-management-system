@@ -25,6 +25,8 @@ const LoginPage = () => {
       const payload = isRegister
         ? { userName, email, password }
         : { email, password };
+      
+        console.log("Sending payload:", payload); // リクエスト内容を確認
 
       const response = await axios.post(`${API_BASE_URL}/${endpoint}`, payload);
 
@@ -33,6 +35,7 @@ const LoginPage = () => {
       const token = response.data.token;
       if (token) {
         localStorage.setItem("token", token);
+        console.log("Token saved to localStorage:", token); // トークンが保存されているか確認
         navigate("/custs");
       }
 
@@ -41,7 +44,7 @@ const LoginPage = () => {
       setPassword("");
     } catch (error) {
       alert(isRegister ? "登録に失敗しました" : "ログインに失敗しました");
-      console.error(error);
+      console.error("Error:", error.response ? error.response.data : error.message);
     }
   };
 
