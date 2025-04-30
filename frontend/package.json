@@ -9,8 +9,10 @@
     "@fullcalendar/daygrid": "^6.1.17",
     "@fullcalendar/react": "^6.1.17",
     "axios": "^1.8.4",
+    "react-calendar": "^5.1.0",
     "react-router-dom": "^7.5.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "react-time-picker": "^7.0.0"
   },
   "browserslist": {
     "production": [

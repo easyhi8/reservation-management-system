@@ -6,7 +6,6 @@ import Calendar from "react-calendar";
 import TimePicker from "react-time-picker";
 import "react-calendar/dist/Calendar.css";
 import "react-time-picker/dist/TimePicker.css";
-import "./ReservationForm.css"; // スタイルを別ファイルで定義（任意）
 
 const ReservationForm = ({ token, onSuccess, initialData = null }) => {
   const [date, setDate] = useState(initialData?.date ? new Date(initialData.date) : new Date());

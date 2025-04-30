@@ -7,6 +7,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Home from "./pages/HomePage";
 import Admin from "./pages/AdminPage";
+import ReservationForm from "./components/ReservationForm";
 
 function App() {
   return (
@@ -14,8 +15,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/reservations" element={<AdminPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/reservations" element={<Admin />} />
         <Route path="/reservations/new" element={<ReservationForm />} />
         <Route path="/reservations/edit/:id" element={<ReservationForm />} />
       </Routes>
