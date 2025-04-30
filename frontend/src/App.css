@@ -105,7 +105,7 @@ select {
 }
 
 .textBox button:hover {
-  background-color: #07b0e8; /* ホバー時の背景色を変更 */
+  background-color: #56c75a; /* ホバー時の背景色を変更 */
 }
 .textBox button {
   margin-left: auto;
@@ -114,7 +114,7 @@ select {
   padding: 10px;
   border: none;
   border-radius: 4px;
-  background-color: #008cba;
+  background-color: #4caf50;
   color: white;
   font-size: 16px;
   cursor: pointer;
@@ -122,7 +122,8 @@ select {
 }
 
 .login .textBox button {
-  margin: 0 15px;
+  width: 100%;
+  margin: 0;
 }
 
 .detail button {
@@ -164,10 +165,16 @@ select {
   flex-direction: row;     /* 横並びに */
   justify-content: space-between; /* 中央に配置 */
   margin-top: 10px;         /* 上に少しスペースを追加 */
+  width: 48%;
 }
 
 .buttonContainer button {
   margin-left: 0;
+}
+
+p {
+  width: 100%;
+  text-align: center;
 }
 
 /* リストのスタイル */
