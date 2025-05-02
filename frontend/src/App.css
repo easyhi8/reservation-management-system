@@ -16,7 +16,7 @@ body {
 }
 
 .App {
-  text-align: left;
+  /* text-align: left; */
   width: 80%;
   max-width: 800px;
   margin: 40px auto;
@@ -219,7 +219,48 @@ td {
   border: none;
 }
 
+/* ナビゲーションバー */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #333333;
+  color: white;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.nav-list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+.nav-list li {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.nav-list li:hover {
+  opacity: 0.8;
+}
+
+/* ホームページ用の余白調整 */
+.home {
+  padding-top: 80px; /* ヘッダー分の余白を追加 */
+  text-align: center;
+}
+
+.home button {
+  background-color: #037DFF;
+  border: none;
+  border-radius: 5%;
+  color: #ffffff;
+}
 
 /* メディアクエリを追加してレスポンシブ対応 */
 
