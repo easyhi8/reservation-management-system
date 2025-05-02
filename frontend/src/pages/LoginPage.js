@@ -36,7 +36,7 @@ const LoginPage = () => {
       if (token) {
         localStorage.setItem("token", token);
         console.log("Token saved to localStorage:", token); // トークンが保存されているか確認
-        navigate("/custs");
+        navigate("/home");
       }
 
       setUserName("");
